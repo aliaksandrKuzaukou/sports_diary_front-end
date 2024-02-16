@@ -2,9 +2,9 @@ FROM node:alpine3.11
 
 RUN mkdir -p /app
 WORKDIR /app
-COPY sports_diary_front-end/package*.json ./
+COPY ./package*.json ./
 RUN npm install
-COPY sports_diary_front-end/ .
+COPY ./ .
 EXPOSE $APP_PORT
 ENV APP_PORT=$APP_PORT
 
