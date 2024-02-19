@@ -2,13 +2,13 @@ FROM node:alpine3.11
 
 RUN mkdir -p /app
 WORKDIR /app
-COPY sports_diary_front-end/package*.json ./
+COPY ./package*.json ./
 RUN npm install
-COPY sports_diary_front-end/ .
-EXPOSE $APP_PORT
-ENV APP_PORT=$APP_PORT
+COPY ./ .
+EXPOSE 80
+ENV APP_PORT=80
 
 # Set the base url
-ENV PROXY_API=$PROXY_API
+ENV PROXY_API=http://sports-diary-backend:8080/
 
 CMD [ "npm", "start" ]
