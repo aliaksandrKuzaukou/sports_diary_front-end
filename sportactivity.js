@@ -1,8 +1,8 @@
 let movies = [];
 
 function init(){
-	document.getElementById("retrieveActivities").onclick = loadMovies;
-	loadMovies();
+	document.getElementById("retrieveActivities").onclick = loadSportActivities;
+	loadSportActivities();
 }
 
 function loadSportActivities(){
