@@ -5,8 +5,8 @@ WORKDIR /app
 COPY ./package*.json ./
 RUN npm install
 COPY ./ .
-EXPOSE 3000
-ENV APP_PORT=3000
+EXPOSE 80
+ENV APP_PORT=80
 
 # Set the base url
 ENV PROXY_API=http://sports-diary-backend:8080/
