@@ -16,7 +16,7 @@ function loadMovies(){
 		}
 	};
 
-	xhttp.open("GET", "https://dev-sportsdiary.azurewebsites.net/api/activities", true);
+	xhttp.open("GET", `${process.env.PROXY_API}/api/activities`, true);
 	xhttp.send();
 }
 
