@@ -1,11 +1,11 @@
 let movies = [];
 
 function init(){
-	document.getElementById("retrieveActivities").onclick = loadMovies;
+	document.getElementById("retrieveMovies").onclick = loadMovies;
 	loadMovies();
 }
 
-function loadSportActivities(){
+function loadMovies(){
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
@@ -16,7 +16,7 @@ function loadSportActivities(){
 		}
 	};
 
-	xhttp.open("GET", `${process.env.API_URL}/api/activities`, true);
+	xhttp.open("GET", "https://dev-sportsdiary.azurewebsites.net/api/activities", true);
 	xhttp.send();
 }
 
@@ -25,11 +25,11 @@ function render(){
 	movies.forEach(movie =>{
 		content += `
 			<div>
-				<p> Activity Id: ${movie.Id}</p>
+				<p> Movie: ${movie.Id}</p>
 				<br/>
-				<p> Name: ${movie.Name}</p>
+				<p> Runtime: ${movie.Name}</p>
 			</div>
 		`
 	})
-	document.getElementById("activitydiv").innerHTML = content;
+	document.getElementById("moviediv").innerHTML = content;
 }

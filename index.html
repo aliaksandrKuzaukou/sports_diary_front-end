@@ -9,14 +9,50 @@
 	<body onload="init()">
 		<div>
 			<input type="text" placeholder="Search" name="textbox">
-			<button type="button" id="retrieveActivities">Load a activity</button>
+			<button type="button" id="retrieveMovies">Load a movie</button>
 		</div>
 		<br />
-		<div id="activitydiv">
+		<div id="moviediv">
 
 		</div>
 
-	<script src="sportactivity.js"></script>
+	<script>
+		let movies = [];
+
+function init(){
+	document.getElementById("retrieveMovies").onclick = loadMovies;
+	loadMovies();
+}
+
+function loadMovies(){
+	let xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			let responseObject = JSON.parse(xhttp.responseText);
+			movies = responseObject.results;
+			render();
+		}
+	};
+
+	xhttp.open("GET", "https://dev-sportsdiary.azurewebsites.net/api/activities", true);
+	xhttp.send();
+}
+
+function render(){
+	let content = "";
+	movies.forEach(movie =>{
+		content += `
+			<div>
+				<p> Movie: ${movie.Id}</p>
+				<br/>
+				<p> Runtime: ${movie.Name}</p>
+			</div>
+		`
+	})
+	document.getElementById("moviediv").innerHTML = content;
+}
+	</script>
 	</body>
 </body>
 </html>
