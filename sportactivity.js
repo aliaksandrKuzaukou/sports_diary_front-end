@@ -8,7 +8,8 @@ async function getVariable(){
 	return fetch("/getVariable").then(res => res.text()).then(data => data);
 }
 async function loadMovies(){
-	let xhttp = new XMLHttpRequest();
+	try{
+		let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -21,6 +22,10 @@ async function loadMovies(){
 	console.log(baseUrl);
 	xhttp.open("GET", baseUrl, true);
 	xhttp.send();
+	}
+	catch(err){
+		console.log(err);
+	}
 }
 
 function render(){
