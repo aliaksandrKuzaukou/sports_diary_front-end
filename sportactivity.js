@@ -1,6 +1,13 @@
 let movies = [];
 
-function loadMovies(){
+function init(){
+	document.getElementById("retrieveMovies").onclick = loadMovies;
+	getVariable();
+}
+async function getVariable(){
+	return fetch("/getVariable").then(res => res.text()).then(data => data);
+}
+async function loadMovies(){
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
@@ -10,8 +17,9 @@ function loadMovies(){
 			render();
 		}
 	};
-
-	xhttp.open("GET", `${process.env.PROXY_API}/api/activities`, true);
+	let baseUrl = await getVariable();
+	console.log(baseUrl);
+	xhttp.open("GET", baseUrl, true);
 	xhttp.send();
 }
 

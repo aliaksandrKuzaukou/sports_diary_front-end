@@ -1,14 +1,17 @@
-var http = require('http'),
-    fs = require('fs');
+const express = require('express');
+const app = express();
+const port = process.env.APP_PORT;
 
+app.use(express.static('./'));
 
-fs.readFile('./index.html', function (err, html) {
-    if (err) {
-        throw err; 
-    }       
-    http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(process.env.APP_PORT);
-});
+app.use('/static', express.static(__dirname + './'));
+app.get('/', (req, res) => {
+    console.log("reload page")
+    res.sendFile(__dirname + "/index.html")
+  });
+  app.get("/getVariable", (req, res) => {
+        res.send(`${process.env.PROXY_API}/api/activities`);
+  });
+  app.listen(port, () => {
+    console.log("server start")
+  });
