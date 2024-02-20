@@ -9,6 +9,6 @@ EXPOSE 80
 ENV APP_PORT=80
 
 # Set the base url
-ENV PROXY_API=http://sports-diary-backend:80/
+ENV PROXY_API=http://sports-diary-backend:80
 
 CMD [ "npm", "start" ]
