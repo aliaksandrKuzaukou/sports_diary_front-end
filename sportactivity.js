@@ -8,6 +8,27 @@ async function getVariable(){
 	return fetch("/getVariable").then(res => res.text()).then(data => data);
 }
 async function loadMovies(){
+	let baseUrl = await getVariable();
+	console.log(baseUrl);
+	fetch(baseUrl)
+	.then(response => {
+	  if (response.ok) {
+		movies = response.json(); // Parse the response data as JSON
+	  } else {
+		throw new Error('API request failed');
+	  }
+	})
+	.then(data => {
+	  // Process the response data here
+	  console.log(data); // Example: Logging the data to the console
+	})
+	.catch(error => {
+	  // Handle any errors here
+	  console.error(error); // Example: Logging the error to the console
+	});
+}
+
+async function c(){
 	try{
 		let xhttp = new XMLHttpRequest();
 
