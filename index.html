@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports activity</title>
+	<script type="text/javascript" src="sportactivity.js"></script>
+	<script>
+		function init(){
+	document.getElementById("retrieveMovies").onclick = loadMovies;
+	loadMovies();
+}
+	</script>
 </head>
 <body>
 	<body onload="init()">
@@ -15,7 +22,6 @@
 		<div id="moviediv">
 
 		</div>
-<script src="./sportactivity.js"></script>
 	<!-- <script>
 		let movies = [];
 

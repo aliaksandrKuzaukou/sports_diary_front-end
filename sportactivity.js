@@ -1,10 +1,5 @@
 let movies = [];
 
-function init(){
-	document.getElementById("retrieveMovies").onclick = loadMovies;
-	loadMovies();
-}
-
 function loadMovies(){
 	let xhttp = new XMLHttpRequest();
 
